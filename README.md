@@ -6,6 +6,10 @@ my gin study
 
 **NOTE**
 
+## basic
+
+- about go: [awisu2/go\-study: my go study](https://github.com/awisu2/go-study)
 ## contents
 
 - [quickstart](./quickstart/)
+- [tryFunctions](./tryFunctions/)

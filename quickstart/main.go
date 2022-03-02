@@ -13,7 +13,7 @@ func main() {
 		})
 	})
 
-	addr := ""
+	addr := ":8080"
 	if runtimes.GetInfo().OsInfo.IsWindows {
 		addr = "localhost:8080" // avoid windows security alert
 	}
