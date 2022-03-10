@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/awisu2/goUtils v0.0.22
 	github.com/gin-gonic/gin v1.7.7
+	github.com/google/wire v0.5.0
 	github.com/spf13/cobra v1.3.0
 )
 

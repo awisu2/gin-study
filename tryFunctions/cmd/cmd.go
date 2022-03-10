@@ -10,7 +10,7 @@ var params = struct {
 
 // create command
 var Cmd = &cobra.Command{
-	Use:   "app",
+	Use:   "tryFunctions",
 	Short: "gin server",
 	Args:  cobra.ArbitraryArgs, // arguments setting.(ArbitraryArgs: any value ok)
 	// can chooses `Run()` or `RunE()`
@@ -20,9 +20,9 @@ var Cmd = &cobra.Command{
 	// get persistent arg: cmd.PersistentFlags().GetString("str")
 	//
 	// show help: `cmd.Help()`
-	Run: func(cmd *cobra.Command, args []string) {
-		cmd.Help()
-	},
+	// Run: func(cmd *cobra.Command, args []string) {
+	// 	cmd.Help()
+	// },
 }
 
 // run initialize like viper

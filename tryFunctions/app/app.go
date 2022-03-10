@@ -1,43 +1,18 @@
 package app
 
 import (
-	"fmt"
-
-	"github.com/awisu2/gin-study/tryFunctions/gin"
-	"github.com/awisu2/goUtils/runtimes"
+	"github.com/awisu2/gin-study/tryFunctions/app/wire"
+	_framework "github.com/awisu2/gin-study/tryFunctions/frameworks/gin"
 )
 
-// application option
-type AppOptions struct {
-	Host       string
-	Port       int
-	Production bool
-}
-
-// fix option values
-func (opt *AppOptions) Fix() {
-	// at production
-	if !opt.Production {
-		if opt.Host == "" {
-			info := runtimes.GetInfo()
-			if info.OsInfo.IsWindows {
-				opt.Host = "localhost"
-			}
-		}
+func Run() {
+	opts := &_framework.FrameworkGinOptions{
+		Port: 8080,
 	}
-}
-
-// get address
-func (opt *AppOptions) Address() string {
-	return fmt.Sprintf("%s:%d", opt.Host, opt.Port)
-}
-
-// run application
-func Run(opts *AppOptions) {
 	opts.Fix()
-	engine := gin.CreateEngine()
 
-	setRouter(engine)
+	frameworks := wire.InitializeFrameworkGin(opts)
+	wire.InitializeNotesGinAdapter(frameworks.Engine)
 
-	engine.Run(opts.Address())
+	frameworks.Run()
 }

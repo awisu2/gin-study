@@ -24,13 +24,14 @@ var Cmd = &cobra.Command{
 	//
 	// show help: `cmd.Help()`
 	Run: func(cmd *cobra.Command, args []string) {
-		opt := app.AppOptions{
-			Host:       params.host,
-			Port:       params.port,
-			Production: params.production,
-		}
+		// opt := app.AppOptions{
+		// 	Host:       params.host,
+		// 	Port:       params.port,
+		// 	Production: params.production,
+		// }
 
-		app.Run(&opt)
+		// app.Run(&opt)
+		app.Run()
 	},
 }
 
