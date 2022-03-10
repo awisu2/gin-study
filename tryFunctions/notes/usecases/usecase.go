@@ -6,13 +6,16 @@ import (
 	"github.com/awisu2/gin-study/tryFunctions/domain"
 )
 
-func ProvideNoteUsecase() *NotesUsecase {
-	return &NotesUsecase{}
+func ProvideNoteUsecase(repository domain.NoteRepository) *NotesUsecase {
+	return &NotesUsecase{
+		Repository: repository,
+	}
 }
 
 type NotesUsecase struct {
+	Repository domain.NoteRepository
 }
 
 func (usecase *NotesUsecase) GetById(ctx context.Context, id int64) (domain.Note, error) {
-	return domain.Note{}, nil
+	return usecase.Repository.GetById(ctx, id)
 }

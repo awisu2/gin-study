@@ -9,7 +9,8 @@ package wire
 import (
 	"github.com/awisu2/gin-study/tryFunctions/frameworks/gin"
 	gin3 "github.com/awisu2/gin-study/tryFunctions/notes/adapters/gin"
-	"github.com/awisu2/gin-study/tryFunctions/notes/usecases"
+	"github.com/awisu2/gin-study/tryFunctions/notes/repositories"
+	usecase2 "github.com/awisu2/gin-study/tryFunctions/notes/usecases"
 	gin2 "github.com/gin-gonic/gin"
 )
 
@@ -20,8 +21,9 @@ func InitializeFrameworkGin(opts *gin.FrameworkGinOptions) *gin.FrameworkGin {
 	return frameworkGin
 }
 
-func InitializeNotesGinAdapter(e *gin2.Engine) *gin3.NotesGinAdapter {
-	notesUsecase := usecase.ProvideNoteUsecase()
+func InitializeNotesGinAdapter(e *gin2.Engine, datas usecase.MemoryNotes) *gin3.NotesGinAdapter {
+	notesMemoryRepository := usecase.ProvideNotesRepository(datas)
+	notesUsecase := usecase2.ProvideNoteUsecase(notesMemoryRepository)
 	notesGinAdapter := gin3.ProvideNotesGinAdapter(e, notesUsecase)
 	return notesGinAdapter
 }
